@@ -1,6 +1,5 @@
 <?php
-/*
-Plugin Name: RSS Subscribe Button Widget
+/*Plugin Name: RSS Subscribe Button Widget
 Plugin URI: http://blogs.brynmawr.edu/
 Version: 1.0
 Description: A widget that adds an RSS Subscribe Button to your sidebar for your blog's RSS feed
@@ -44,7 +43,7 @@ class RSS_subscribe_button_widget extends WP_Widget
  	
 	$feed_url = get_bloginfo('rss2_url');
     // Do Your Widgety Stuff Here...
-    echo "<a href="$feed_url">Subscribe to feed</a>";
+    echo "<a href='$feed_url'>Subscribe to feed</a>";
  
     echo $after_widget;
   }
