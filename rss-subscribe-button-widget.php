@@ -17,7 +17,7 @@ class RSS_subscribe_button_widget extends WP_Widget
  
   function form($instance)
   {
-    $instance = wp_parse_args((array) $instance, array( 'title' => '' ));
+    $instance = wp_parse_args((array) $instance, array( 'title' => 'Subscribe to RSS feed' ));
     $title = $instance['title'];
 ?>
   <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
@@ -35,17 +35,17 @@ class RSS_subscribe_button_widget extends WP_Widget
   {
     extract($args, EXTR_SKIP);
  
-    echo $before_widget;
+//    echo $before_widget;
     $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
  
-    if (!empty($title))
-      echo $before_title . $title . $after_title;;
+//    if (!empty($title))
+//      echo $before_title . $title . $after_title;;
  	
 	$feed_url = get_bloginfo('rss2_url');
+	$theme_url = get_bloginfo('template_directory');
     // Do Your Widgety Stuff Here...
-    echo "<a href='$feed_url'>Subscribe to feed</a>";
- 
-    echo $after_widget;
+    echo "<h3><a href='$feed_url'><img style='float:left;margin-top:3px;margin-right:5px;background:orange;color:white;border:none;' width='14' height='14' src='$theme_url' alt='RSS' />$title</a></h3>"; 
+//    echo $after_widget;
   }
 }
 add_action( 'widgets_init', create_function('', 'return register_widget("RSS_subscribe_button_widget");') );
